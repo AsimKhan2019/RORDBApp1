@@ -246,7 +246,7 @@ Devise.setup do |config|
   # are using only default views.
    config.scoped_views = true
    config.router_name = :admin
-   config.admin_fields = [:email, :password, :account, :subscription]
+   #config.admin_fields = [:email, :password, :account, :subscription]
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
