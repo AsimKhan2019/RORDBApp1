@@ -1,19 +1,33 @@
 # frozen_string_literal: true
 
 class Admin::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  #before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  # before_action :configure_permitted_parameters, only: [:create] 
+   before_action :configure_permitted_parameters#, only: [:create] 
 
   # GET /resource/sign_up
-   def new
-     super
-   end
+   #def new
+   #  super
+   #end
 
   # POST /resource
    def create
-     super
-   end
+    ActiveRecord::Base.transaction do
+      # Ensure admin attributes are permitted in strong parameters
+      admin = Admin.new(admin_params)
+
+      if admin.save
+        # Registration successful
+        flash[:notice] = "Admin registered successfully!"
+        redirect_to root_path
+      else
+        # Registration failed
+        flash[:error] = "Registration failed."
+        raise ActiveRecord::Rollback # Rollback the transaction
+        render :new
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -41,14 +55,20 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-   #def configure_permitted_parameters
-	# devise_parameter_sanitizer.permit(:sign_up, keys: [:account, :subscription])
-   #end 
+   def configure_permitted_parameters
+	 devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :account, :subscription])
+   end 
+
+   private
+
+    def admin_params
+        params.require(:admin).permit(:email, :password, :password_confirmation, :account, :subscription)
+    end
 
   # If you have extra params to permit, append them to the sanitizer.
-    def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:account, :subscription])
-    end
+    #def configure_sign_up_params
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:account, :subscription])
+    #end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
