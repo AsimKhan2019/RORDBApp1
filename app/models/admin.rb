@@ -4,5 +4,5 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
     
-   attr_accessor :email, :password, :password_confirmation, :account, :subscription
+   # attr_accessor :email, :password, :password_confirmation, :account, :subscription
 end
