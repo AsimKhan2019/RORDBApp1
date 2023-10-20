@@ -1,24 +1,14 @@
-# README
+# ROR Application 1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of the application is to test that whether we can create a user from one ROR application portal and then 
+have the ability to login from another ROR application. I have made a simple ROR application using devise to create a 
+new user and then using the same PostgreSql to create an admin and also login from another ROR application. 
 
-Things you may want to cover:
+**Technologies Used**
+Ruby On Rails 
+Visual Studio Professional 
+PostgreSQL
+Devise 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Contributor** 
+Asim Mehmood Khan

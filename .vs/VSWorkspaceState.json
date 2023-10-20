@@ -1,16 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\controllers",
-    "\\app\\controllers\\admin",
-    "\\app\\models",
-    "\\app\\views",
-    "\\app\\views\\layouts",
-    "\\config",
-    "\\config\\initializers",
-    "\\db",
-    "\\db\\migrate"
+    "\\app"
   ],
+  "SelectedNode": "\\db",
   "PreviewInSolutionExplorer": false
 }
